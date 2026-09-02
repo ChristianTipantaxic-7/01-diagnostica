@@ -12,8 +12,27 @@
  *     (por ejemplo al hacer click en #btn-saludar o #btn-limpiar).
  */
 
-// TODO: C2. Selecciona los elementos del DOM necesarios con const
+// CHECK: C2. Selecciona los elementos del DOM necesarios con const
+const inputNombre = document.querySelector("#input-nombre");
+const btnSaludar = document.querySelector("#btn-saludar");
+const btnLimpiar = document.querySelector("#btn-limpiar");
+const mensajeResultado = document.querySelector("#mensaje-resultado");
 
-// TODO: C3. Declara una función nombrada para procesar el saludo
+// CHECK: C3. Declara una función nombrada para procesar el saludo
+function generarSaludo() {
+    const nombre = inputNombre.value;
 
-// TODO: C4 y C5. Agrega los eventos addEventListener para actualizar la pantalla
+    if (nombre === "") {
+        mensajeResultado.textContent = "Por favor, ingresa tu nombre.";
+    } else {
+        mensajeResultado.textContent = "¡Hola, " + nombre + "! Bienvenido al Panel Interactivo UETS.";
+    }
+}
+
+// CHECK: C4 y C5. Agrega los eventos addEventListener para actualizar la pantalla
+btnSaludar.addEventListener("click", generarSaludo);
+
+btnLimpiar.addEventListener("click", function() {
+    inputNombre.value = "";
+    mensajeResultado.textContent = "Esperando interacción...";
+});
